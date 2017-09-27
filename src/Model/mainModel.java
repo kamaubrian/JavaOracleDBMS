@@ -23,6 +23,9 @@ public abstract class mainModel {
     protected Connection conn = null;
     protected ResultSet rst = null;
     
+    protected mainModel(){
+        
+    }
     
     public final boolean dbConnect(){
         boolean success = true;

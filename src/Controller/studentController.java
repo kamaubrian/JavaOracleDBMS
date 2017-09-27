@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import View.*;
 import Model.*;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,8 +34,7 @@ public class studentController {
             Logger.getLogger(studentController.class.getName()).log(Level.SEVERE, null, ex);
 }
         
-        
-        
+              
     }
     
     static submitHandler submit = new submitHandler();
@@ -53,6 +53,15 @@ public class studentController {
             fname=stuView.getFirstName().getText();
             lname=stuView.getLastName().getText();
             email=stuView.getEmail().getText();
+            
+            if(stuView.getID().getText().isEmpty()||
+                    stuView.getFirstName().getText().isEmpty()||
+                    stuView.getLastName().getText().isEmpty()||
+                    stuView.getEmail().getText().isEmpty()||
+                    stuView.getPhone().getText().isEmpty()){
+                JOptionPane.showMessageDialog(stuView,"Please Fill In Empty Field");
+                return;
+            }
             stuModel.addStu(id, fname, lname, email, phone);
             }catch(Exception ex){
                 System.out.println("Commit Exception"+ex.getMessage());
@@ -63,6 +72,7 @@ public class studentController {
     }
     public static void main(String [] args){
         stuView.submitData().addActionListener(submit);
+        stuView.setSize(new Dimension(420,370));
         stuView.setLocationRelativeTo(null);
         stuView.setVisible(true);                
     }   
