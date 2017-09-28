@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import View.*;
 import Model.*;
 import java.awt.Dimension;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -38,10 +37,11 @@ public class studentController {
               
     }
     
-    static recordsHandler records = new recordsHandler();
+    static adminHandler records = new adminHandler();
     static submitHandler submit = new submitHandler();
     static studentView stuView = new studentView();
     static addStudents stuModel = new addStudents();
+    static adminView adminv = new adminView();
     
     static class submitHandler implements ActionListener{
 
@@ -81,28 +81,31 @@ public class studentController {
             }           
         }        
     }
-    static class recordsHandler implements ActionListener{
+    static class adminHandler implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             try{
-                JOptionPane.showMessageDialog(stuView, "Coming Soon","Feature Coming Soon",2);
+               // JOptionPane.showMessageDialog(stuView, "Coming Soon","Feature Coming Soon",2);
+               showAdminPage();
                 
             }catch(Exception ex){
                 System.out.println("Records Handler Exception " +ex.getMessage());
             }
-        }
-        
-        
-        
-        
-        
+        }      
     }
     public static void main(String [] args){
         stuView.submitData().addActionListener(submit);
         stuView.getRecords().addActionListener(records);
-        
+        stuView.setResizable(false);
+        stuView.setTitle("Oracle in Java");
         stuView.setSize(new Dimension(420,370));
         stuView.setLocationRelativeTo(null);
         stuView.setVisible(true);                
     }   
+    public static void showAdminPage(){
+       stuView.dispose();
+       adminController.showAdminPage();
+        
+        
+    }
 }
