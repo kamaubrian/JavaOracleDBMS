@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import View.*;
 import Model.*;
 import java.awt.Dimension;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,7 +24,7 @@ public class studentController {
     
     
     static{
-                                try {
+            try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -37,6 +38,7 @@ public class studentController {
               
     }
     
+    static recordsHandler records = new recordsHandler();
     static submitHandler submit = new submitHandler();
     static studentView stuView = new studentView();
     static addStudents stuModel = new addStudents();
@@ -65,19 +67,40 @@ public class studentController {
             if(!stuModel.checkDetailsExist(id, email)){
                 stuModel.addStu(id, fname, lname, email, phone);
                  JOptionPane.showMessageDialog(stuView,"Submit Success");
+                 stuView.getID().setText("");
+                 stuView.getFirstName().setText("");
+                 stuView.getLastName().setText("");
+                 stuView.getEmail().setText("");
+                 stuView.getPhone().setText("");
             }else{
                 JOptionPane.showMessageDialog(stuView,"User Details Already Exists");
             }
                         
             }catch(Exception ex){
                 System.out.println("Commit Exception"+ex.getMessage());
-            }
-            
-            
+            }           
         }        
+    }
+    static class recordsHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try{
+                JOptionPane.showMessageDialog(stuView, "Coming Soon","Feature Coming Soon",2);
+                
+            }catch(Exception ex){
+                System.out.println("Records Handler Exception " +ex.getMessage());
+            }
+        }
+        
+        
+        
+        
+        
     }
     public static void main(String [] args){
         stuView.submitData().addActionListener(submit);
+        stuView.getRecords().addActionListener(records);
+        
         stuView.setSize(new Dimension(420,370));
         stuView.setLocationRelativeTo(null);
         stuView.setVisible(true);                
