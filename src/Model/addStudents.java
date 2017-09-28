@@ -6,6 +6,7 @@
 package Model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +27,24 @@ public class addStudents extends mainModel {
      
      dbDisconnect();
       return true;
+    }
+    
+    public ArrayList<String> getUser(String id,String email) throws SQLException{
+        ArrayList stuList = new ArrayList();
+        dbConnect();
+        String sql="SELECT * FROM STUDENT  where id = ?  AND email = ?";
+        pst=conn.prepareStatement(sql);
+        pst.setString(1,id);
+        pst.setString(2,email);
+        rst = pst.executeQuery();
+        if(rst.next()){           
+            stuList.add(rst.getString("id"));
+            stuList.add(rst.getString("email"));
+        }       
+        return stuList;
+    }
+    public boolean checkDetailsExist(String id,String username) throws SQLException{
+        return !getUser(id,username).isEmpty();     
     }
     
     

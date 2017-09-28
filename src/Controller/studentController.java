@@ -62,12 +62,18 @@ public class studentController {
                 JOptionPane.showMessageDialog(stuView,"Please Fill In Empty Field");
                 return;
             }
-            stuModel.addStu(id, fname, lname, email, phone);
+            if(!stuModel.checkDetailsExist(id, email)){
+                stuModel.addStu(id, fname, lname, email, phone);
+                 JOptionPane.showMessageDialog(stuView,"Submit Success");
+            }else{
+                JOptionPane.showMessageDialog(stuView,"User Details Already Exists");
+            }
+                        
             }catch(Exception ex){
                 System.out.println("Commit Exception"+ex.getMessage());
             }
             
-             JOptionPane.showMessageDialog(stuView,"Submit Success");
+            
         }        
     }
     public static void main(String [] args){
