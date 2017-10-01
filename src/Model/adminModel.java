@@ -10,20 +10,18 @@ import java.sql.*;
  * @author brian-kamau
  */
 public class adminModel extends mainModel {
-    public String getPassword() throws SQLException{
+    public String getPassword(String username) throws SQLException{
         String sql;
         String pass="";
         dbConnect();
         
-        sql="select * from administrator where username = 'admin'";
-        
-        pst=conn.prepareStatement(sql);       
+        sql="select * from administrator where username = ?";      
+        pst=conn.prepareStatement(sql);
+        pst.setString(1, username);
         rst = pst.executeQuery();
         if(rst.next()){
             
             pass= rst.getString("password");
-            System.out.println("Its null Buddy"+pass);
-            
         }       
         dbDisconnect();
         return pass;

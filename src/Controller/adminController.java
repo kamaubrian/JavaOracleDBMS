@@ -26,11 +26,12 @@ public class adminController {
         public void actionPerformed(ActionEvent e) {
             try{
                 String password = adminV.getPassword().getText();
+                String admin = adminV.getAdmin().getText();
                 if(password.isEmpty()){
                     JOptionPane.showMessageDialog(adminV,"Enter Password");
                     return;
                 }
-                if(password.equals(adminM.getPassword())){
+                if(password.equals(adminM.getPassword(admin))){
                     JOptionPane.showMessageDialog(adminV,"Feature Coming Soon");
 
                 }else{
