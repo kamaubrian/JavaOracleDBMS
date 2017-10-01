@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author brian-kamau
  */
-public class addStudents extends mainModel {
+public class AddStudents extends BaseModel {
     public boolean addStu(String id,String firstname,String lastname,String email,String phone) throws SQLException{
      dbConnect();
      String sql;

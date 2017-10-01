@@ -12,7 +12,7 @@ import java.sql.*;
  *
  * @author brian-kamau
  */
-public abstract class mainModel {
+public abstract class BaseModel {
     
     private static final String dbDriver="oracle.jdbc.driver.OracleDriver";
     private static final String dbUrl ="jdbc:oracle:thin:@localhost:1521:xe";
@@ -23,7 +23,7 @@ public abstract class mainModel {
     protected Connection conn = null;
     protected ResultSet rst = null;
     
-    protected mainModel(){
+    protected BaseModel(){
         
     }
     

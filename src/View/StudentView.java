@@ -12,12 +12,12 @@ import javax.swing.JTextField;
  *
  * @author brian-kamau
  */
-public class studentView extends javax.swing.JFrame {
+public class StudentView extends javax.swing.JFrame {
 
     /**
      * Creates new form studentView
      */
-    public studentView() {
+    public StudentView() {
         initComponents();
     }
 

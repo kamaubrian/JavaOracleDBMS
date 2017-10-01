@@ -14,11 +14,11 @@ import Model.*;
  *
  * @author brian-kamau
  */
-public class adminController {
+public class AdminController {
     
-    static adminView adminV = new adminView();
+    static AdminView adminV = new AdminView();
     static loginHandler login = new loginHandler();
-    static adminModel adminM = new adminModel();
+    static Admin adminM = new Admin();
   
     static class loginHandler implements ActionListener{
 

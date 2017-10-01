@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author brian-kamau
  */
-public class adminView extends javax.swing.JFrame {
+public class AdminView extends javax.swing.JFrame {
 
     /**
      * Creates new form adminVIew
      */
-    public adminView() {
+    public AdminView() {
         initComponents();
     }
 

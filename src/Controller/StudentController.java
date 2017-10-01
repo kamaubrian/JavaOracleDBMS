@@ -19,7 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author brian-kamau
  */
-public class studentController {
+public class StudentController {
     
     
     static{
@@ -31,7 +31,7 @@ public class studentController {
                 }
 }
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(studentController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
 }
         
               
@@ -39,9 +39,9 @@ public class studentController {
     
     static adminHandler records = new adminHandler();
     static submitHandler submit = new submitHandler();
-    static studentView stuView = new studentView();
-    static addStudents stuModel = new addStudents();
-    static adminView adminv = new adminView();
+    static StudentView stuView = new StudentView();
+    static AddStudents stuModel = new AddStudents();
+    static AdminView adminv = new AdminView();
     
     static class submitHandler implements ActionListener{
 
@@ -104,7 +104,7 @@ public class studentController {
     }   
     public static void showAdminPage(){
        stuView.dispose();
-       adminController.showAdminPage();
+       AdminController.showAdminPage();
         
         
     }
