@@ -23,7 +23,22 @@ public abstract class BaseModel {
     protected Connection conn = null;
     protected ResultSet rst = null;
     
-    protected BaseModel(){
+    protected BaseModel() {
+        //String sql;
+        //dbConnect();
+        /*
+            try{
+        
+            sql="CREATE TABLE Students(
+        "
+        
+        
+        }catch(Exception ex){
+            System.out.println("Creating Tables Exception"+ex.getMessage());
+        }
+        
+        
+        */
         
     }
     

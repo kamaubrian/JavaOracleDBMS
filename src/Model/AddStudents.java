@@ -23,8 +23,7 @@ public class AddStudents extends BaseModel {
      pst.setString(3,lastname);
      pst.setString(4,email);
      pst.setString(5,phone);
-     pst.executeUpdate();   
-     
+     pst.executeUpdate();    
      dbDisconnect();
       return true;
     }
@@ -45,6 +44,24 @@ public class AddStudents extends BaseModel {
     }
     public boolean checkDetailsExist(String id,String username) throws SQLException{
         return !getUser(id,username).isEmpty();     
+    }
+    
+    public ArrayList<String> getUserDetailsById(String id) throws SQLException{
+        ArrayList list = new ArrayList();
+        String sql;
+        dbConnect();
+        sql="SELECT * FROM STUDENT WHERE ID =?";
+        pst=conn.prepareStatement(sql);
+        pst.setString(1,id);
+        rst=pst.executeQuery();
+        if(rst.next()){
+            
+            list.add(rst.getString("firstname"));
+            list.add(rst.getString("lastname"));
+            list.add(rst.getString("email"));
+            list.add(rst.getString("phone"));
+        }        
+        return list;
     }
     
     

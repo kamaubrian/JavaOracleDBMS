@@ -9,7 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import View.*;
 import Model.*;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -42,6 +44,7 @@ public class StudentController {
     static StudentView stuView = new StudentView();
     static AddStudents stuModel = new AddStudents();
     static AdminView adminv = new AdminView();
+    static SearchHandler search = new SearchHandler();
     
     static class submitHandler implements ActionListener{
 
@@ -93,9 +96,41 @@ public class StudentController {
             }
         }      
     }
+    static class SearchHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try{
+              
+               String id = stuView.searchUser().getText();
+               if(!id.isEmpty()){
+               if(stuModel.getUserDetailsById(id)!=null){
+                   for(String list :stuModel.getUserDetailsById(id)){
+                   JOptionPane.showMessageDialog(stuView,list);
+                   stuView.searchUser().setText("");
+               }
+                  // JOptionPane.showMessageDialog(stuView,stuModel.getUserDetailsById(id));
+                   
+                  
+               }else{
+                   JOptionPane.showMessageDialog(stuView, "Student Not Found");
+               }
+               }else{
+                   stuView.searchUser().setCaretColor(Color.red);
+                   JOptionPane.showMessageDialog(stuView,"Enter Admission Number");
+               }
+            }catch(Exception ex){
+                System.err.println("Search Exception"+ex.getMessage());
+            }            
+            
+        }
+        
+    }
     public static void main(String [] args){
         stuView.submitData().addActionListener(submit);
         stuView.getRecords().addActionListener(records);
+        stuView.getUsers().addActionListener(search);
+        stuView.getRecords().setEnabled(true);
         stuView.setResizable(false);
         stuView.setTitle("Oracle in Java");
         stuView.setSize(new Dimension(420,370));

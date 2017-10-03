@@ -127,7 +127,6 @@ public class AdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_adminActionPerformed
 
     /**
-     * @param args the command line arguments
      * @return 
      */
     public JPasswordField getPassword(){
