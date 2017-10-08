@@ -9,7 +9,7 @@ import java.sql.*;
  *
  * @author brian-kamau
  */
-public class Admin extends BaseModel {
+public class Admin extends Base {
     public String getPassword(String username) throws SQLException{
         String sql;
         String pass="";

@@ -12,7 +12,7 @@ import java.sql.*;
  *
  * @author brian-kamau
  */
-public abstract class BaseModel {
+public abstract class Base {
     
     private static final String dbDriver="oracle.jdbc.driver.OracleDriver";
     private static final String dbUrl ="jdbc:oracle:thin:@localhost:1521:xe";
@@ -23,14 +23,28 @@ public abstract class BaseModel {
     protected Connection conn = null;
     protected ResultSet rst = null;
     
-    protected BaseModel() {
-        //String sql;
-        //dbConnect();
-        /*
-            try{
+    protected Base() {
+        String sql;
+        dbConnect();
         
-            sql="CREATE TABLE Students(
-        "
+            try{
+             stat =conn.createStatement();
+             sql="CREATE TABLE STUDENT("
+                     + "ID VARCHAR(33) NOT NULL,"
+                     + "FIRSTNAME VARCHAR(33) NOT NULL,"
+                     + "LASTNAME VARCHAR(33) NOT NULL,"
+                     + "EMAIL VARCHAR(33) NOT NULL,"
+                     + "PHONE VARCHAR(33) NOT NULL,"
+                     + "UNIQUE(EMAIL),"
+                     + "PRIMARY KEY(ID))";
+             stat.addBatch(sql);
+             sql="CREATE TABLE ADMINISTRATOR("
+                     + "USERNAME VARCHAR(15) NOT NULL,"
+                     + "PASSWORD VARCHAR(15) NOT NULL,"
+                     + "PRIMARY KEY(USERNAME))";
+             stat.addBatch(sql);
+             
+             stat.executeBatch();
         
         
         }catch(Exception ex){
@@ -38,7 +52,7 @@ public abstract class BaseModel {
         }
         
         
-        */
+        dbDisconnect();
         
     }
     

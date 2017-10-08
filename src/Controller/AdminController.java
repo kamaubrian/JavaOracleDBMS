@@ -32,7 +32,9 @@ public class AdminController {
                     return;
                 }
                 if(password.equals(adminM.getPassword(admin))){
-                    JOptionPane.showMessageDialog(adminV,"Feature Coming Soon");
+                    adminV.dispose();
+                    RecordsController.showPage();
+                   // JOptionPane.showMessageDialog(adminV,"Feature Coming Soon");
 
                 }else{
                     JOptionPane.showMessageDialog(adminV,"Password Incorrect for Admin");

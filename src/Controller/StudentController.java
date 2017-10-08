@@ -39,6 +39,8 @@ public class StudentController {
               
     }
     
+
+    
     static adminHandler records = new adminHandler();
     static submitHandler submit = new submitHandler();
     static StudentView stuView = new StudentView();
@@ -105,13 +107,18 @@ public class StudentController {
                String id = stuView.searchUser().getText();
                if(!id.isEmpty()){
                if(stuModel.getUserDetailsById(id)!=null){
-                   for(String list :stuModel.getUserDetailsById(id)){
-                   JOptionPane.showMessageDialog(stuView,list);
-                   stuView.searchUser().setText("");
-               }
-                  // JOptionPane.showMessageDialog(stuView,stuModel.getUserDetailsById(id));
+                   String fname = stuModel.getUserDetailsById(id).get(0);
+                   String lname = stuModel.getUserDetailsById(id).get(1);
+                   String email = stuModel.getUserDetailsById(id).get(2);
+                   String phone=stuModel.getUserDetailsById(id).get(3);
+
                    
-                  
+                   stuView.getID().setText(id);
+                   stuView.getFirstName().setText(fname);
+                   stuView.getLastName().setText(lname);
+                   stuView.getEmail().setText(email);
+                   stuView.getPhone().setText(phone);
+                                    
                }else{
                    JOptionPane.showMessageDialog(stuView, "Student Not Found");
                }
@@ -120,6 +127,7 @@ public class StudentController {
                    JOptionPane.showMessageDialog(stuView,"Enter Admission Number");
                }
             }catch(Exception ex){
+                
                 System.err.println("Search Exception"+ex.getMessage());
             }            
             
@@ -127,6 +135,9 @@ public class StudentController {
         
     }
     public static void main(String [] args){
+          showMainPage() ;        
+    }   
+    public static void showMainPage(){
         stuView.submitData().addActionListener(submit);
         stuView.getRecords().addActionListener(records);
         stuView.getUsers().addActionListener(search);
@@ -135,8 +146,8 @@ public class StudentController {
         stuView.setTitle("Oracle in Java");
         stuView.setSize(new Dimension(420,370));
         stuView.setLocationRelativeTo(null);
-        stuView.setVisible(true);                
-    }   
+        stuView.setVisible(true);  
+    }
     public static void showAdminPage(){
        stuView.dispose();
        AdminController.showAdminPage();

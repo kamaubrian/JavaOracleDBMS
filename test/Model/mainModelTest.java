@@ -20,14 +20,14 @@ public class mainModelTest {
     @Test
     public void testDBConnection(){
         System.out.println("Database Connection Tests");
-        BaseModel instance = new mainModelimpl();
+        Base instance = new mainModelimpl();
         boolean expResult = true;
         boolean result = instance.dbConnect();
         assertEquals(expResult,result);
         
         
     }   
-    public class mainModelimpl extends BaseModel{
+    public class mainModelimpl extends Base{
         
     }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author brian-kamau
  */
-public class AddStudents extends BaseModel {
+public class AddStudents extends Base {
     public boolean addStu(String id,String firstname,String lastname,String email,String phone) throws SQLException{
      dbConnect();
      String sql;
@@ -63,6 +63,15 @@ public class AddStudents extends BaseModel {
         }        
         return list;
     }
-    
+    public boolean DeleteStudentRecord(String id) throws SQLException{
+        dbConnect();
+        String sql;
+        sql="DELETE FROM STUDENT WHERE ID =?";
+        pst=conn.prepareStatement(sql);
+        pst.setString(1,id);
+        pst.executeUpdate();
+        dbDisconnect();
+        return true;
+    }
     
 }
